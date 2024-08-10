@@ -21,7 +21,10 @@ public class User {
 	private String email;
 
 	@OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Location> locations = new HashSet<>();
+	private Set<Location> ownLocations = new HashSet<>();
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<LocationAccess> sharedLocations = new HashSet<>();
 
 	public User() {
 	}
@@ -56,21 +59,28 @@ public class User {
 		this.email = email;
 	}
 
-	public Set<Location> getLocations() {
-		return locations;
+	public Set<Location> getOwnLocations() {
+		return ownLocations;
 	}
 
-	public void setLocations(Set<Location> locations) {
-		this.locations = locations;
+	public void setOwnLocations(Set<Location> ownLocations) {
+		this.ownLocations = ownLocations;
 	}
 
-	public void add(Location location) {
+	public void add(Location ownLocation) {
 
-		if (locations == null) {
-			locations = new HashSet<>();
+		if (ownLocations == null) {
+			ownLocations = new HashSet<>();
 		}
-		locations.add(location);
+		ownLocations.add(ownLocation);
+	}
 
+	public Set<LocationAccess> getSharedLocations() {
+		return sharedLocations;
+	}
+
+	public void setSharedLocations(Set<LocationAccess> sharedLocations) {
+		this.sharedLocations = sharedLocations;
 	}
 
 	@Override

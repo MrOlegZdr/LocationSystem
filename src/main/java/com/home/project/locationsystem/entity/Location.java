@@ -24,18 +24,18 @@ public class Location {
 	private User owner;
 
 	@OneToMany(mappedBy = "location", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<LocationAccess> accessPermissions = new HashSet<>();
+	private Set<LocationAccess> sharedUsers = new HashSet<>();
 
 	public Location() {
 	}
 
 	public Location(Long id, @NotBlank String name, @NotBlank String adress, User owner,
-			Set<LocationAccess> accessPermissions) {
+			Set<LocationAccess> sharedUsers) {
 		this.id = id;
 		this.name = name;
 		this.adress = adress;
 		this.owner = owner;
-		this.accessPermissions = accessPermissions;
+		this.sharedUsers = sharedUsers;
 	}
 
 	public Long getId() {
@@ -70,12 +70,12 @@ public class Location {
 		this.owner = owner;
 	}
 
-	public Set<LocationAccess> getAccessPermissions() {
-		return accessPermissions;
+	public Set<LocationAccess> getSharedUsers() {
+		return sharedUsers;
 	}
 
-	public void setAccessPermissions(Set<LocationAccess> accessPermissions) {
-		this.accessPermissions = accessPermissions;
+	public void setSharedUsers(Set<LocationAccess> sharedUsers) {
+		this.sharedUsers = sharedUsers;
 	}
 
 	@Override
