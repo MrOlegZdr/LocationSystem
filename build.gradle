@@ -3,6 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'groovy'
+	id 'jacoco'
 }
 
 group = 'com.home.project'
@@ -11,6 +12,10 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+}
+
+ext {
+    mapstructVersion = "1.4.2.Final"
 }
 
 dependencies {
@@ -27,6 +32,22 @@ dependencies {
 	testImplementation 'org.spockframework:spock-spring:1.3-groovy-2.4'
 }
 
+tasks.withType(JavaCompile) {
+    options.annotationProcessorPath = configurations.annotationProcessor
+}
+
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = true
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }
