@@ -38,10 +38,10 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
     testLogging {
         events "passed", "skipped", "failed"
     }
+    finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {
