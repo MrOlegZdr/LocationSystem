@@ -2,20 +2,11 @@ package com.home.project.locationsystem.dto;
 
 public class LocationDTO {
 
-	public Long id;
-	public String name;
-	public String adress;
-	public Long ownerId;
+	private String name;
+	private String address;
+	private String ownerEmail;
 
 	public LocationDTO() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -26,20 +17,20 @@ public class LocationDTO {
 		this.name = name;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public Long getOwnerId() {
-		return ownerId;
+	public String getOwnerEmail() {
+		return ownerEmail;
 	}
 
-	public void setOwnerId(Long ownerId) {
-		this.ownerId = ownerId;
+	public void setOwnerEmail(String ownerEmail) {
+		this.ownerEmail = ownerEmail;
 	}
 
 }

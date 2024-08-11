@@ -17,7 +17,7 @@ public class Location {
 	private String name;
 
 	@NotBlank
-	private String adress;
+	private String address;
 
 	@ManyToOne
 	@JoinColumn(name = "owner_id", nullable = false)
@@ -29,11 +29,11 @@ public class Location {
 	public Location() {
 	}
 
-	public Location(Long id, @NotBlank String name, @NotBlank String adress, User owner,
+	public Location(Long id, @NotBlank String name, @NotBlank String address, User owner,
 			Set<LocationAccess> sharedUsers) {
 		this.id = id;
 		this.name = name;
-		this.adress = adress;
+		this.address = address;
 		this.owner = owner;
 		this.sharedUsers = sharedUsers;
 	}
@@ -54,12 +54,12 @@ public class Location {
 		this.name = name;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public User getOwner() {
@@ -80,7 +80,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "Location [id=" + id + ", name=" + name + ", adress=" + adress + "]";
+		return "Location [id=" + id + ", name=" + name + ", address=" + address + "]";
 	}
 
 }

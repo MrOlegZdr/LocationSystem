@@ -1,15 +1,14 @@
 package com.home.project.locationsystem.service;
 
-import java.util.List;
 import java.util.Optional;
 
-import com.home.project.locationsystem.dto.UserDTO;
+import com.home.project.locationsystem.entity.User;
 
 public interface UserService {
 
-	UserDTO registerUser(UserDTO userDTO);
+	User registerUser(String name, String email);
 
-	Optional<UserDTO> findByEmail(String email);
+	Optional<User> findUserByEmail(String email);
 
-	List<UserDTO> getAllUsers();
+	Optional<User> findUserById(Long id);
 }
